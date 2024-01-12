@@ -1,17 +1,19 @@
 server:
-  port: 8080
+  port: 8081
 spring:
   application:
-    name: order-server
+    name: user-server
   cloud:
+    #nacos配置
     nacos:
       server-addr: 127.0.0.1:8848
+      #集群配置
       discovery:
         cluster-name: HZ
-#nacos负载均衡规则配置(优先选择本地集群)
-user-server:
-  ribbon:
-    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule
+      config:
+        file-extension: yml
+  profiles:
+    active: dev
 #eureka:
 #  client:
 #    service-url:
